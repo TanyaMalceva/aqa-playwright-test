@@ -29,6 +29,7 @@ module.exports = defineConfig({
   reporter: [['html', {open: 'never'}]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    headless: false,
     httpCredentials: {
       username: "guest",
       password: "welcome2qauto"
@@ -41,6 +42,9 @@ module.exports = defineConfig({
     },
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    launchOptions: {
+      slowMo: 600
+    }
   },
 
   /* Configure projects for major browsers */
