@@ -23,7 +23,6 @@ test.describe('User registration. Positive test', ()=>{
         const emailInput = popup.locator('input#signupEmail')
         const passwordInput = popup.locator('input#signupPassword')
         const repeatPasswordInput = popup.locator('input#signupRepeatPassword')
-
         const registerButton = popup.locator('button.btn.btn-primary')
 
         await nameInput.fill(name)
