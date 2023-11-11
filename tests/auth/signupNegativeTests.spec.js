@@ -1,6 +1,6 @@
 import {expect, test} from "@playwright/test";
 
-test.describe.only('User registration validations. Negative tests', ()=>{
+test.describe('User registration validations. Negative tests', ()=>{
     test('Should display a validation message if the Name field length is longer than allowed', async({page})=>{
 
         const name = 'T'
@@ -158,7 +158,7 @@ test('Should display a validation message if the Email field has invalid data', 
 
 //---------------------------------------------------------------------------------------------------
 
-test.only('Should display a validation message if datas does not match on Password and Re-enter password fields', async({page})=>{
+test('Should display a validation message if datas does not match on Password and Re-enter password fields', async({page})=>{
 
     const name = 'Tanya'
     const lastname = 'Maltseva'
