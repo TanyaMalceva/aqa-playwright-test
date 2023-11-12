@@ -1,5 +1,8 @@
+//import dotenv from 'dotenv'
+
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
+import {config as testConfig} from "./config/config.js";
 
 /**
  * Read environment variables from file.
@@ -10,6 +13,7 @@ const { defineConfig, devices } = require('@playwright/test');
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
+//dotenv.config()
 module.exports = defineConfig({
   //testDir: './tests',
   testMatch: 'tests/**/*.spec.js',
@@ -29,13 +33,12 @@ module.exports = defineConfig({
   reporter: [['html', {open: 'never'}]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    //--run tests without UI--headless
     headless: false,
-    httpCredentials: {
-      username: "guest",
-      password: "welcome2qauto"
-    },
+    httpCredentials: testConfig.httpCredentials,
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'https://qauto.forstudy.space/',
+   // baseURL: 'https://qauto.forstudy.space/',
+    baseURL: testConfig.baseURL,
     viewport: {
       width: 1200,
       height: 840

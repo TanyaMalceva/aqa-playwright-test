@@ -1,6 +1,6 @@
 import {expect, test} from "@playwright/test";
 
-test.describe('User registration. Positive test', ()=>{
+test.describe('User registration. Positive test @smoke @regression', ()=>{
     test('New user registration', async({page})=>{
 
         const name = 'Tanya'
@@ -10,6 +10,10 @@ test.describe('User registration. Positive test', ()=>{
         const repeatPassword = 'Password2'
 
         await page.goto('/')
+
+        //debugging
+        await page.pause()
+
         const signUpButton = page.locator('.hero-descriptor_btn', {hasText:'Sign up'});
         await expect(signUpButton, "Sign up button should be visible").toBeVisible()
         await expect(signUpButton, "Sign up button should be enabled").toBeEnabled()
