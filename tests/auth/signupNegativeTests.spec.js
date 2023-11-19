@@ -1,6 +1,6 @@
 import {expect, test} from "@playwright/test";
 
-test.describe('User registration validations. Negative tests', ()=>{
+test.describe('User registration validations. Negative tests @regression', ()=>{
     test('Should display a validation message if the Name field length is longer than allowed', async({page})=>{
 
         const name = 'T'
