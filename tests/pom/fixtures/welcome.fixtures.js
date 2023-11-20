@@ -1,0 +1,1 @@
+export const HEADER_LINKS = ['Garage', 'Fuel expenses', 'Instruction']
