@@ -1,10 +1,12 @@
-import BaseComponent from "./BaseComponent.js";
+import BaseComponent from "../pageObjects/BaseComponent.js";
+import Header from "./components/Header.js";
 import {expect} from "@playwright/test";
-export class BasePage extends BaseComponent {
+export default class BasePage extends BaseComponent {
     constructor(page, url, container) {
         const wrapper = container ?? page.locator('html')
         super(page, wrapper)
         this._url = url
+        this.header = new Header(page)
     }
     async navigate(){
         await this.open()
