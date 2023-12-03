@@ -1,4 +1,4 @@
-import {BaseComponent} from "../pageObjects/BaseComponent.js";
+import BaseComponent from "../../pageObjects/BaseComponent";
 import {expect} from "@playwright/test";
 
 export default class SignInPopup extends BaseComponent {
