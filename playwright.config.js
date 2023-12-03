@@ -34,7 +34,8 @@ module.exports = defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     //--run tests without UI--headless
-    headless: false,
+    headless: true,
+   // headless: false,
     httpCredentials: testConfig.httpCredentials,
     /* Base URL to use in actions like `await page.goto('/')`. */
    // baseURL: 'https://qauto.forstudy.space/',
@@ -46,7 +47,7 @@ module.exports = defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     launchOptions: {
-      slowMo: 400
+      slowMo: 1000
     }
   },
 

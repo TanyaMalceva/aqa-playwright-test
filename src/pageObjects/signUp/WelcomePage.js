@@ -1,4 +1,4 @@
-import {BasePage} from "../BasePage.js";
+import BasePage from "../BasePage.js";
 import {expect} from "@playwright/test";
 import {SignupPopup} from "../components/SignupPopup.js";
 

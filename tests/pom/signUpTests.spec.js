@@ -34,7 +34,7 @@ test.describe("New user registration", ()=>{
         })
 });
 //-------------------------------------User registration validation--------------------------------
-test.describe.only('User registration validation', ()=> {
+test.describe('User registration validation', ()=> {
     let page
     let welcomePage
     let signupPopup

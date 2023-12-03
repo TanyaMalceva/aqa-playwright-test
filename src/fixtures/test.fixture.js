@@ -1,9 +1,9 @@
 import {test as base, request} from "@playwright/test"
 import ProfilePage from "../pageObjects/profilePage/ProfilePage.js";
-import {WelcomePage} from "../pageObjects/signUp/WelcomePage.js";
-import {USERS} from "../data/dict/users.js";
-import {STORAGE_STATE_USER_PATH} from "../data/dict/storageState.js";
-import GaragePage from "../pageObjects/panel/garagePage/GaragePage.js";
+import {WelcomePage} from '../pageObjects/signUp/WelcomePage.js';
+import {USERS} from '../data/dict/users.js';
+import {STORAGE_STATE_USER_PATH} from '../data/dict/storageState.js';
+import GaragePage from '../pageObjects/panel/garagePage/GaragePage.js';
 
 export const test = base.extend({
     headerLinks: ['Garage', 'Fuel expenses', 'Instructions'],
@@ -29,6 +29,7 @@ export const test = base.extend({
         await garagePage.navigate()
         await use(garagePage)
 
+        //всі сторінки закриються після тесту
         await ctx.close()
     },
     userAPIClient: async ({},use)=>{
@@ -51,4 +52,5 @@ export const test = base.extend({
         await profilePage.navigate()
         await use(profilePage)
     },
-})
+}
+)
