@@ -1,7 +1,7 @@
 import BaseComponent from "../BaseComponent.js";
 import {expect} from "@playwright/test";
 
-export class SignupPopup extends BaseComponent {
+export default class SignupPopup extends BaseComponent {
     constructor(page) {
         super(page, page.locator('div.modal-content'));
         this.nameInput = this._container.locator('input#signupName')
