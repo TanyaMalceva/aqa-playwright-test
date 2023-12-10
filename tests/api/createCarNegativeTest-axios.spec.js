@@ -8,7 +8,7 @@ import {VALID_BRAND_MODELS} from "../../src/data/dict/models.js"
 import {config} from "../../config/config";
 import {USERS} from "../../src/data/dict/users";
 
-test.describe.only("API Negative test (axios)", ()=>{
+test.describe("API Negative test (axios)", ()=>{
     let client
 
     test.beforeAll(async ()=> {
@@ -28,7 +28,7 @@ test.describe.only("API Negative test (axios)", ()=>{
         })
     })
 
-    test.only("should return error message with Route or entity not found (axios)",
+    test("should return error message with Route or entity not found (axios)",
         async () => {
         const brandId = VALID_BRANDS_RESPONSE_BODY.data[0].id
         const modelId = VALID_BRAND_MODELS[brandId].data[1].id
@@ -46,7 +46,7 @@ test.describe.only("API Negative test (axios)", ()=>{
         expect(body.message).toBe("Not found")
     })
 
-    test.only("should return error message (axios)", async () => {
+    test("should return error message (axios)", async () => {
 
         const brandId = VALID_BRANDS_RESPONSE_BODY.data[0].id
         const modelId = VALID_BRAND_MODELS[brandId].data[1].id
