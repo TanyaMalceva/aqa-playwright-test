@@ -9,7 +9,7 @@ test.describe("API C", ()=>{
     let client
 
     test.beforeAll(async ()=>{
-        client = await APIClient.authenticate(undefined, {
+        client = await APIClient.authenticate( {
             "email": USERS.TANYA_MALTSEVA.email,
             "password": USERS.TANYA_MALTSEVA.password,
             "remember": false
