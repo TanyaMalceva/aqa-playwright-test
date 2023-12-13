@@ -14,6 +14,10 @@ export default class CarController extends BaseController {
         super(options)
     }
 
+    async createCar(data){
+        return this._client.post(this.#CREATE_CAR_PATH, data)
+    }
+
     async getUserCars () {
         return await this._client.get(this.#GET_USER_CARS_PATH)
     }

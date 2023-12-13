@@ -8,10 +8,12 @@ export default class APIClient {
     constructor(options) {
         this.auth = new AuthController(options)
         this.cars = new CarController(options)
-        this.user = new UserController(options)
+       // this.user = new UserController(options)
+        this.users = new UserController(options)
+
     }
 
-    static async authenticate(options = {baseUrl: config.apiURL}, userData){
+    static async authenticate(userData, options = {baseUrl: config.apiURL}){
         const jar = new CookieJar()
         const params = {...options, cookies: jar}
         const authController = new AuthController(params)
