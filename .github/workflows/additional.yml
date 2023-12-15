@@ -12,36 +12,11 @@ jobs:
         with:
           repository: ${{github.repository}}
           ref: ${{github.ref}}
-      - name: "Use node js"
-        uses: actions/setup-node@v3
+      - name: "Run api tests"
+        uses: ./.github/actions/tests/api
         with:
-          node-version: 18
-      - name: "Install dependencies"
-        run: npm ci
-      - name: "Run tests"
-        run: npx playwright test
-        env:
-          HTTP_CREDENTIALS_USERNAME: ${{secrets.HTTP_CREDENTIALS_USERNAME}}
           HTTP_CREDENTIALS_PASSWORD: ${{secrets.HTTP_CREDENTIALS_PASSWORD}}
-          ENV: 'stage'
-      #      - name: "Upload artifacts"
-      #        if: failure()
-      #        uses: actions/upload-artifact@v3
-      #        with:
-      #          name: github-pages
-      #          path: playwright-report/
-      - name: Fix permissions
-        if: ${{ always() }}
-        run: |
-          chmod -c -R +rX "_site/" | while read line; do
-            echo "::warning title=Invalid file permissions automatically fixed::$line"
-          done
-      - name: Upload Pages artifact
-        if: ${{ always() }}
-        uses: actions/upload-pages-artifact@v2
-        with:
-          name: github-pages
-          path: playwright-report/
+          HTTP_CREDENTIALS_USERNAME: ${{secrets.HTTP_CREDENTIALS_USERNAME}}
 
   deploy:
     if: ${{ always() }}
