@@ -3,11 +3,11 @@ import ProfilePage from "../pageObjects/profilePage/ProfilePage.js";
 import {WelcomePage} from "../pageObjects/signUp/WelcomePage.js";
 import {USERS} from "../data/dict/users.js";
 import {STORAGE_STATE_USER_PATH} from "../data/dict/storageState.js";
-import GaragePage from "../pageObjects/panel/garagePage/GaragePage.js";
+//import GaragePage from "../pageObjects/panel/garagePage/GaragePage.js";
 
 export const test = base.extend({
     headerLinks: ['Garage', 'Fuel expenses', 'Instructions'],
-    userInfo: USERS.JOE_DOU,
+    userInfo: USERS.TANYA_MALTSEVA,
     userProfilePage: async ({browser}, use)=>{
         const ctx = await browser.newContext({
             storageState: STORAGE_STATE_USER_PATH
@@ -44,8 +44,8 @@ export const test = base.extend({
         await welcomePage.navigate()
         const popup = await welcomePage.openSignInPopup()
         await popup.signIn({
-            email: USERS.JOE_DOU.email, // manager credentials
-            password: USERS.JOE_DOU.password
+            email: USERS.TANYA_MALTSEVA.email, // manager credentials
+            password: USERS.TANYA_MALTSEVA.password
         })
         const profilePage = new ProfilePage(page)
         await profilePage.navigate()

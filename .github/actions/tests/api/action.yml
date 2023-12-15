@@ -1,0 +1,52 @@
+name: 'Api tests'
+description: 'Api tests'
+inputs:
+  HTTP_CREDENTIALS_USERNAME:
+    description: 'HTTP_CREDENTIALS_USERNAME'
+    required: true
+  HTTP_CREDENTIALS_PASSWORD:
+    description: 'HTTP_CREDENTIALS_PASSWORD'
+    required: true
+  ENV:
+    description: 'ENV'
+    required: false
+    default: 'stage'
+
+
+runs:
+  using: "composite"
+  steps:
+    - name: "Checkout to tests repository"
+      uses: actions/checkout@v4
+      with:
+        repository: ${{github.repository}}
+        ref: ${{github.ref}}
+    - name: "Use node js"
+      shell: bash
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+    - name: "Install dependencies"
+      shell: bash
+      run: npm ci
+    - name: "Run tests"
+      shell: bash
+      run: npx playwright test
+      env:
+        HTTP_CREDENTIALS_USERNAME: ${{inputs.HTTP_CREDENTIALS_USERNAME}}
+        HTTP_CREDENTIALS_PASSWORD: ${{inputs.HTTP_CREDENTIALS_PASSWORD}}
+        ENV: ${{inputs.ENV}}
+    - name: Fix permissions
+      if: ${{ always() }}
+      shell: bash
+      run: |
+        chmod -c -R +rX "_site/" | while read line; do
+          echo "::warning title=Invalid file permissions automatically fixed::$line"
+        done
+    - name: Upload Pages artifact
+      shell: bash
+      if: ${{ always() }}
+      uses: actions/upload-pages-artifact@v2
+      with:
+        name: github-pages
+        path: playwright-report/
